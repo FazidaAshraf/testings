@@ -11,10 +11,12 @@ try:
 
     while True:
             print("im in while loop!!!")
-            print(ser.readline())
+            print("ser.readline()", ser.readline())
             data = ser.readline().decode('utf-8').strip()
-            if ser.readline() == b'11' or ser.readline() == b'12':
-                 print("it is detected!!!")
+            print("data: ", data)
+            number = ser.read()
+            if number != b'':
+                print("its not b''!!!")
             #print(f"Received: {data}")
 
 except Exception as e:
