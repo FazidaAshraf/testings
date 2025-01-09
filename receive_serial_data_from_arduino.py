@@ -1,10 +1,12 @@
 import serial
+import time
 
 arduino_port = '/dev/ttyUSB0'  # Update as needed
 baud_rate = 9600
 
 try:
     ser = serial.Serial(arduino_port, baud_rate, timeout=1)
+    time.sleep(2)  # Allow Arduino to reset
     print("Connected to Arduino")
 
     while True:
