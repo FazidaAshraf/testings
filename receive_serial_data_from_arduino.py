@@ -10,8 +10,7 @@ try:
     print("Connected to Arduino")
 
     while True:
-        if ser.in_waiting > 0:
-            print("im in the loop!!!")
+            print("im in while loop!!!")
             data = ser.readline().decode('utf-8').strip()
             print(f"Received: {data}")
 
