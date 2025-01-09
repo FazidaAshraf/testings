@@ -11,6 +11,7 @@ try:
 
     while True:
             print("im in while loop!!!")
+            print(ser.readline())
             data = ser.readline().decode('utf-8').strip()
             print(f"Received: {data}")
 
