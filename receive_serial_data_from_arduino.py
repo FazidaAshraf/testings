@@ -8,7 +8,7 @@ if __name__ == '__main__':
     array_tmp = []
 
     while True:
-        byte_read = ser.read() # Read bytes from serial port
+        byte_read = ser.read().decode('utf-8').rstrip() # Read bytes from serial port
         print("byte_read:", byte_read)
         if byte_read:#if not empty
             byte_char = byte_read.decode() # Decode bytes to string
