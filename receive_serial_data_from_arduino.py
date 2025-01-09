@@ -8,6 +8,7 @@ if __name__ == '__main__':
 
     while True:
         number = ser.read()
+        print("number", number)
         if number != b'':
             if int.from_bytes(number, byteorder='big') == 18:
                 led_number = random.randint(1,4)
