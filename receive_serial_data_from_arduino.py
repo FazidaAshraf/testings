@@ -13,7 +13,9 @@ try:
             print("im in while loop!!!")
             print(ser.readline())
             data = ser.readline().decode('utf-8').strip()
-            print(f"Received: {data}")
+            if ser.readline() ==b'12':
+                 print("it is detected 12!!!")
+            #print(f"Received: {data}")
 
 except Exception as e:
     print(f"Error: {e}")
