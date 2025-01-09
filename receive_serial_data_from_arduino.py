@@ -15,6 +15,7 @@ try:
             data = ser.readline().decode('utf-8').strip()
             print("data: ", data)
             number = ser.read()
+            print("number:", number)
             if number != b'':
                 print("its not b''!!!")
             #print(f"Received: {data}")
