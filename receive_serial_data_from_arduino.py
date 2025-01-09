@@ -1,28 +1,16 @@
+#!/usr/bin/env python3
 import serial
-import time
+import random
 
-arduino_port = '/dev/ttyUSB0'  # Update as needed
-baud_rate = 9600
-
-try:
-    ser = serial.Serial(arduino_port, baud_rate, timeout=1)
-    time.sleep(2)  # Allow Arduino to reset
-    print("Connected to Arduino")
+if __name__ == '__main__':
+    ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+    ser.reset_input_buffer()
 
     while True:
-            print("im in while loop!!!")
-            print("ser.readline()", ser.readline())
-            data = ser.readline().decode('utf-8').strip()
-            print("data: ", data)
-            number = ser.read()
-            print("number:", number)
-            if number != b'':
-                print("its not b''!!!")
-            #print(f"Received: {data}")
-
-except Exception as e:
-    print(f"Error: {e}")
-
-finally:
-    if 'ser' in locals() and ser.is_open:
-        ser.close()
+        number = ser.read()
+        if number != b'':
+            if int.from_bytes(number, byteorder='big') == 18:
+                led_number = random.randint(1,4)
+                print("Button has been pressed.")
+                print("Sending number " + str(led_number) + " to Arduino.")
+                ser.write(str(led_number).encode('utf-8'))
